@@ -105,3 +105,15 @@ Dir.glob File.expand_path("../plugins/*/Gemfile", __FILE__) do |file|
   #TODO: switch to "eval_gemfile file" when bundler >= 1.2.0 will be required (rails 4)
   instance_eval File.read(file), file
 end
+
+# Use puma as the app server 
+gem "puma"
+
+# Deploy with Capistrano
+group :development do
+  gem 'capistrano', '~> 3.2'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+end
